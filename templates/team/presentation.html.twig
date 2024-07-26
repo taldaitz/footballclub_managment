@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <header class="container">
+        <h1 class="text-center m-5">Liste des équipes</h1>
+
+        {% if is_granted('ROLE_USER')%}
+            <p>
+                <a href="{{ path('app_game_generate') }}">Générer les matchs</a>
+            </p>
+        {% endif %}
+    </header>
+
+    <main class="container mt-5">
+
+        {% for team in teams %}
+
+            <section class="m-5 p-3">
+                <h2> {{ team.name }} </h2>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Numéro</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for player in team.players %}
+                            <tr>
+                                <td>{{ player.firstname }}</td>
+                                <td>{{ player.lastname }}</td>
+                                <td>{{ player.number }}</td>
+                                <td>
+                                    <a href="{{ path("app_player_details", {'id' : player.id}) }}">Voir</a>
+                                    <a href="{{ path("app_player_edit", {'id' : player.id}) }}">Modifier</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        {% endfor %}
+
+    </main>
+
+{% endblock %}

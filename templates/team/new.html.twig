@@ -1,0 +1,16 @@
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+    <main class="container bg-light p-5">
+        <h1 class="text-center m-5">Création d'une nouvelle équipe</h1>
+
+        {{ form(form) }}
+
+        <p>
+            <a href="{{ path("app_team_presentation") }}">Retour</a>
+        </p>
+    </main>
+{% endblock %}

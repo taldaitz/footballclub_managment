@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+
+    <main class="container">
+
+        <h1 class="text-center">{{ player.firstname }} {{ player.lastname }}</h1>
+
+        <ul>
+            <li>Numéro : {{ player.number }}</li>
+            <li>Poste : {{ player.position }}</li>
+            <li>Equipe : {{ player.team.name }} - {{ player.team.city }}</li>
+        </ul>
+
+    </main>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <ul>
+        {% for game in games %}
+            <li>{{game.teamIn.name}} vs {{game.teamOut.name}} - {{game.date | date('d/m/Y')}}</li>
+        {% endfor %}
+    
+    </ul>
+
+{% endblock %}
