@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+
+<ul>
+    <li>{{game.teamIn.name}} - {{ game.teamInScore }}</li>
+    <li>{{game.teamOut.name}} - {{ game.teamOutScore }}</li>
+    <li>{{game.date | date('d/m/Y')}}</li>
+    <li>{{game.goals | length}}</li>
+</ul>
+
+{% endblock %}

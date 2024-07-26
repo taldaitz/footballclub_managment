@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Game;
+use App\Repository\RefereeRepository;
 use App\Repository\TeamRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
@@ -10,11 +11,13 @@ use Doctrine\ORM\EntityManagerInterface;
 class GameManager 
 {
     private TeamRepository $teamRepository;
+    private RefereeRepository $refereeRepository;
     private EntityManagerInterface $entityManager;
 
-    public function __construct(TeamRepository $teamRepository, EntityManagerInterface $entityManager)
+    public function __construct(TeamRepository $teamRepository, RefereeRepository $refereeRepository, EntityManagerInterface $entityManager)
     {
         $this->teamRepository = $teamRepository;
+        $this->refereeRepository = $refereeRepository;
         $this->entityManager = $entityManager;
     }
 
@@ -22,6 +25,7 @@ class GameManager
     {
 
         $teams = $this->teamRepository->findAll();
+        $referee = $this->refereeRepository->find(1);
 
         $dateGame = new DateTime();
 
@@ -37,6 +41,7 @@ class GameManager
                 $game->setTeamIn($teamIn)
                     ->setTeamOut($teamOut)
                     ->setDate($dateGame)
+                    ->setReferee($referee)
                 ;
 
                 $this->entityManager->persist($game);

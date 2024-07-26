@@ -44,7 +44,6 @@ class PlayerController extends AbstractController
     #[Route('/player/modify/{id}', name: 'app_player_edit')]
     public function update(Player $player, Request $request, EntityManagerInterface $entityManager) : Response
     {
-
         $form = $this->createForm(PlayerType::class, $player);
 
         $form->handleRequest($request);
@@ -54,7 +53,7 @@ class PlayerController extends AbstractController
             $entityManager->persist($player);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_player_details', ['id' => $player->getId()]);
+            return $this->redirectToRoute('app_team_presentation');
         }
 
         return $this->render('/player/edit.html.twig', ['form' => $form]);

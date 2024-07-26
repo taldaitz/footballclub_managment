@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Referee{% endblock %}
+
+{% block body %}
+    <h1>Referee</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ referee.id }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ referee.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ referee.firstname }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_referee_index') }}">back to list</a>
+
+    <a href="{{ path('app_referee_edit', {'id': referee.id}) }}">edit</a>
+
+    {{ include('referee/_delete_form.html.twig') }}
+{% endblock %}
